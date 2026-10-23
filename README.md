@@ -1,102 +1,89 @@
-# Ayush — portfolio (Vue 3)
+# Ayush Portfolio — Update v1
 
-A warm, light, editorial portfolio starter built with **Vue 3 + Vite**. The experience is deliberately phone-first: one-screen-inspired sections, a touch-friendly orbital project selector, original local SVG project artwork, accessible navigation, subtle transitions, and a reduced-motion fallback.
+A light, minimalist, mobile-first portfolio built with Vue 3 and Vite. This update follows the supplied visual reference: warm off-white surfaces, confident typography, a quieter hero, and a large project showcase with a rotating circular orbit rather than the previous project dial.
 
-> **Before publishing:** review every project description and add real repository/demo links. The illustration files are original interface concepts, not screenshots of finished products. Blank project links intentionally fall back to your GitHub profile so the page never links to a made-up repository.
+## What's changed in Update v1
 
-## What is included
+### Updated
+- `src/components/ProjectWork.vue` — rebuilt the project area as a large orbital/swirl showcase. Select any project around the circle; use the previous/next buttons, horizontal swipe on mobile, or keyboard arrow keys.
+- `src/components/ProjectArtwork.vue` — removed small labels and decorative chrome so the artwork reads clearly.
+- `src/components/HeroSection.vue` — removed the extra scroll cue, section counter and secondary tagline from the hero footer to reduce clutter.
+- `src/data/projects.js` — now contains seven showcase entries with concise copy. Only Aurix is described as a personal project; the other six are clearly labelled fictional concept studies.
+- `src/main.js` — loads the new dedicated orbit stylesheet.
+- `package.json` — renamed package to `ayush-portfolio-update-v1`, version `1.0.0`.
+- `README.md` — update/deletion list, install/build instructions and repo structure refreshed.
 
-- Vue components split by responsibility (`SiteHeader`, `HeroSection`, `ProjectWork`, `ProjectDial`, `ProjectArtwork`, `AboutSection`, `ContactSection`, and section navigation).
-- Five original, local SVG artwork pieces, plus a custom favicon, social preview card, and web manifest.
-- Separate design-token, global, layout, component, and responsive stylesheets.
-- Mobile navigation, section-aware navigation state, keyboard focus styles, skip link, touch swiping, click/tap dial controls, and `prefers-reduced-motion` support.
-- Vercel-friendly Vite configuration, metadata, `robots.txt`, clean URL settings, and a GitHub Actions build check for pushes and pull requests.
+### Added
+- `src/styles/project-swirl.css` — circular project motion, selected state, responsive styling, transitions, and reduced-motion support.
+- `public/projects/relay.svg` — original local concept artwork for Relay.
+- `public/projects/form-field.svg` — original local concept artwork for Form & Field.
 
-## 1. Edit your personal details
+### Removed
+- `src/components/ProjectDial.vue` — the old compact dial interface is no longer used. The new orbit selector lives inside `ProjectWork.vue`.
+- Old dial controls and excess micro-labels inside the project showcase.
 
-Open `src/data/portfolio.js` and update:
+### Important honesty note
+The six entries marked **CONCEPT STUDY** are fictional design concepts made to show the visual direction, not claims that finished apps exist. Replace descriptions/status/links with real work before presenting the site as a factual portfolio. Project links are blank and fall back to your configured GitHub profile rather than inventing repositories.
 
-- `name`, `role`, `locationLabel`, and `intro`
-- `githubUrl` (currently set to `https://github.com/byhayush`)
-- `email` (optional; leave blank to use GitHub for the contact action)
-- `about`, `currently`, and `toolkit`
+## 1. Personal details
 
-Then open `src/data/projects.js`. For each project, replace `href: ''` with its **actual** public repository or live demo URL. Update project names, summaries, technologies, and status labels to match the real work. The art assets live in `public/projects/` and can be replaced without changing the Vue components as long as the filenames remain the same.
+Edit `src/data/portfolio.js`:
+- `name`, `role`, `locationLabel`, `intro`
+- `githubUrl` (currently `https://github.com/byhayush` — confirm this is your intended profile)
+- `email`, `about`, `currently`, and `toolkit`
 
-## 2. Add this ZIP to an existing GitHub repository
+Edit `src/data/projects.js` to update project names, descriptions, tags, statuses, and real repository/demo URLs. The SVG files are in `public/projects/`.
 
-Upload `ayush-portfolio-vue-pro.zip` to the **root** of your repository in the GitHub web UI, then open that repository in Codespaces. Run this single command in the Codespaces terminal:
+## 2. Put this update into an existing GitHub repository
+
+Upload `ayush-portfolio-update-v1.zip` to the **root** of the same repository, open its Codespace, and run this one command in the terminal:
 
 ```bash
-unzip -o ayush-portfolio-vue-pro.zip -d . && rm ayush-portfolio-vue-pro.zip
+unzip -o ayush-portfolio-update-v1.zip -d . && rm -f src/components/ProjectDial.vue && rm ayush-portfolio-update-v1.zip
 ```
 
-This extracts the archive into the repository root and removes the ZIP **only when extraction succeeds**. `-o` overwrites matching files, so do not use it blindly if the repository already contains files you need to keep. This archive has no outer project folder: `package.json`, `index.html`, `src/`, and `public/` land directly in the root.
+This archive has no outer folder. `package.json`, `index.html`, `src/`, and `public/` are extracted directly into the repository root. Existing matching files are overwritten. The command also removes the obsolete dial component from the previous version and deletes the ZIP only if extraction succeeds. Commit or back up any unrelated local changes first.
 
-If `unzip` is missing, use `python -m zipfile -e ayush-portfolio-vue-pro.zip .` and then remove the archive with `rm ayush-portfolio-vue-pro.zip` after confirming extraction.
-
-## 3. Install and run in Codespaces
+## 3. Run in Codespaces
 
 ```bash
-npm install
-npm run dev
+npm install && npm run dev
 ```
 
-Codespaces normally offers to open a forwarded preview for the Vite port. Stop the server with `Ctrl+C`.
+Open the forwarded Vite port when Codespaces offers it. Stop the server with `Ctrl+C`.
 
-## 4. Check the production build
+## 4. Verify production build
 
 ```bash
 npm run build
 ```
 
-Vite writes the production site to `dist/`. Preview that output locally with:
+Vite writes the production site to `dist/`. Do not deploy until this command succeeds. The development environment used to prepare this ZIP had a package-install timeout, so the production build has not been represented as pre-verified here.
+
+## 5. Commit and push
 
 ```bash
-npm run preview
+git add -A && git commit -m "Update portfolio to orbital projects layout" && git push
 ```
 
-If a build command fails, resolve the displayed error before deploying. Check the **Problems** panel and the terminal output rather than relying only on the dev preview.
+If Git reports nothing to commit, inspect `git status` and confirm extraction happened at the repository root.
 
-## 5. Push the extracted project to GitHub
+## 6. Deploy on Vercel
 
-```bash
-git add -A && git commit -m "Build Ayush portfolio" && git push
-```
+1. Open [Vercel](https://vercel.com/) and choose **Add New → Project**.
+2. Import the GitHub repository.
+3. Use **Vite** as the framework preset, `npm run build` as the build command, and `dist` as the output directory. Install command: `npm install`.
+4. Deploy. The Vercel deployment URL appears after the build succeeds.
 
-If Git says there is nothing to commit, confirm the ZIP was extracted at the repository root and check `git status`.
+No environment variables are required.
 
-## 6. Publish on Vercel
-
-1. Sign in at [vercel.com](https://vercel.com/) and choose **Add New → Project**.
-2. Import the GitHub repository that now contains `package.json` at its root.
-3. Use these settings (Vercel generally detects Vite automatically):
-   - **Framework preset:** Vite
-   - **Build command:** `npm run build`
-   - **Output directory:** `dist`
-   - **Install command:** `npm install`
-4. Click **Deploy**. Open the deployment URL after the build reports success.
-5. For later updates, commit and push changes to the connected production branch; Vercel will build a new deployment.
-
-No environment variables are required for this starter.
-
-## Design / implementation notes
-
-- Palette: warm off-white, charcoal, soft sage/lime, muted lilac and beige. Bright accents are used sparingly.
-- Section snapping uses CSS `proximity`, not mandatory full-page snapping, so small screens can still scroll naturally when content is taller than the viewport.
-- The project dial works with buttons, arrows, pagination dots and horizontal swipes. Keyboard users can tab through project nodes.
-- Animations are CSS-based and respect `prefers-reduced-motion`.
-- Google Fonts are loaded remotely with system fallbacks, so the site remains readable when offline; the custom local SVG artwork is bundled.
-- The portfolio does not include analytics, tracking scripts, or a third-party component library.
-
-## Project structure
+## Repo structure
 
 ```text
 .
-├── index.html
-├── package.json
-├── vite.config.js
-├── vercel.json
+├── .github/
+│   └── workflows/
+│       └── verify.yml
 ├── public/
 │   ├── favicon.svg
 │   ├── og-card.svg
@@ -104,22 +91,46 @@ No environment variables are required for this starter.
 │   ├── site.webmanifest
 │   └── projects/
 │       ├── aurix.svg
-│       ├── media-lab.svg
+│       ├── form-field.svg        # added in Update v1
 │       ├── interface-lab.svg
-│       ├── tiny-tools.svg
-│       └── next-thing.svg
-└── src/
-    ├── App.vue
-    ├── main.js
-    ├── components/
-    ├── composables/
-    ├── data/
-    └── styles/
+│       ├── media-lab.svg
+│       ├── next-thing.svg
+│       ├── relay.svg             # added in Update v1
+│       └── tiny-tools.svg
+├── src/
+│   ├── App.vue
+│   ├── main.js                   # updated
+│   ├── components/
+│   │   ├── AboutSection.vue
+│   │   ├── ContactSection.vue
+│   │   ├── HeroSection.vue       # simplified
+│   │   ├── HeroVisual.vue
+│   │   ├── ProjectArtwork.vue    # simplified
+│   │   ├── ProjectWork.vue       # rebuilt orbital showcase
+│   │   ├── SectionDots.vue
+│   │   └── SiteHeader.vue
+│   ├── data/
+│   │   ├── portfolio.js
+│   │   └── projects.js           # expanded to seven entries
+│   └── styles/
+│       ├── components.css
+│       ├── global.css
+│       ├── layout.css
+│       ├── project-swirl.css     # added in Update v1
+│       ├── responsive.css
+│       └── tokens.css
+├── .editorconfig
+├── .gitignore
+├── .prettierrc.json
+├── index.html
+├── package.json                 # renamed/versioned
+├── vercel.json
+└── vite.config.js
 ```
 
-## Before you share the link
+## Before publishing
 
-- Add actual project links and verify the GitHub profile URL.
-- If you want email contact, set `email` in `src/data/portfolio.js`.
-- Replace the social preview domain with your deployed domain in `index.html` if desired.
-- Run `npm run build`, open the Vercel URL on a phone, test the project dial and nav, and confirm every link goes where expected.
+- Confirm your GitHub profile URL.
+- Replace concept studies with real projects or keep their concept label visible.
+- Add actual repository/demo links only when they exist.
+- Run `npm run build` and test the deployed site on a phone.
