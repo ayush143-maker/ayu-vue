@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#faf9f5"/><stop offset="1" stop-color="#ecebe4"/></linearGradient>
+    <radialGradient id="orb"><stop stop-color="#d9efb0"/><stop offset=".56" stop-color="#d9efb0" stop-opacity=".48"/><stop offset="1" stop-color="#d9efb0" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#paper)"/>
+  <circle cx="914" cy="306" r="280" fill="url(#orb)"/>
+  <g fill="none" stroke="#c9c8bd"><circle cx="930" cy="300" r="172"/><circle cx="930" cy="300" r="128" stroke-dasharray="2 10"/><ellipse cx="930" cy="300" rx="224" ry="91" transform="rotate(-35 930 300)"/></g>
+  <circle cx="1061" cy="175" r="12" fill="#b1d779"/>
+  <rect x="76" y="76" width="54" height="54" rx="17" fill="#24251f"/><text x="103" y="114" text-anchor="middle" fill="#f7f6f2" font-family="Arial,sans-serif" font-size="33" font-weight="700">a</text><circle cx="121" cy="116" r="4" fill="#c6ef88"/>
+  <text x="76" y="206" fill="#71736a" font-family="Arial,sans-serif" font-size="17" letter-spacing="4">INDEPENDENT DEVELOPER / 2026</text>
+  <text x="76" y="309" fill="#24251f" font-family="Arial,sans-serif" font-size="82" font-weight="700" letter-spacing="-5">Ideas into</text>
+  <text x="76" y="397" fill="#24251f" font-family="Georgia,serif" font-size="86" font-style="italic" letter-spacing="-4">interfaces.</text>
+  <text x="79" y="466" fill="#71736a" font-family="Arial,sans-serif" font-size="23">Thoughtful interfaces. Useful ideas. Made with intention.</text>
+  <path d="M78 525H1120" stroke="#d5d4cb"/>
+  <text x="78" y="565" fill="#71736a" font-family="monospace" font-size="14" letter-spacing="2">AYUSH / SELECTED WORK</text>
+  <text x="1120" y="565" text-anchor="end" fill="#71736a" font-family="monospace" font-size="14">BUILD WITH INTENTION ↗</text>
+</svg>

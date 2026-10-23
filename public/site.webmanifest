@@ -1,0 +1,10 @@
+{
+  "name": "Ayush — Digital builder",
+  "short_name": "Ayush",
+  "description": "Thoughtful interfaces. Useful ideas. Made with intention.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f6f2",
+  "theme_color": "#f7f6f2",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}
